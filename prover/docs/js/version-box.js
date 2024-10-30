@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function() {
         versionSelector.addEventListener("change", function() {
             const selectedVersion = versionSelector.value;
             // Redirect to the selected version URL
-            window.location.href = '/zksync-era/prover/' + selectedVersion;
+            window.location.href = '/zksync-era/prover' + selectedVersion;
         });
 
         return versionSelector;
