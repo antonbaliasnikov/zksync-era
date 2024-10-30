@@ -8,11 +8,11 @@ on:
       - "prover-v*.*.*"
     paths:
       - 'prover/docs/**'
-      - '.github/workflows/deploy-prover-docs.yaml'
+      - '.github/workflows/deploy-prover-docs.yml'
   pull_request:
     paths:
       - 'prover/docs/**'
-      - '.github/workflows/deploy-prover-docs.yaml'
+      - '.github/workflows/deploy-prover-docs.yml'
   workflow_dispatch:
     inputs:
       ref:

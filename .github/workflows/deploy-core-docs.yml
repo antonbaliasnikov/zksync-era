@@ -8,11 +8,11 @@ on:
       - "core-v*.*.*"
     paths:
       - 'docs/**'
-      - '.github/workflows/deploy-core-docs.yaml'
+      - '.github/workflows/deploy-core-docs.yml'
   pull_request:
     paths:
       - 'docs/**'
-      - '.github/workflows/deploy-core-docs.yaml'
+      - '.github/workflows/deploy-core-docs.yml'
   workflow_dispatch:
     inputs:
       ref:
