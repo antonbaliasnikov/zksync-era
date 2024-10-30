@@ -13,11 +13,11 @@ document.addEventListener("DOMContentLoaded", function() {
         // Iterate over the versions object
         for (const [versionName, versionUrl] of Object.entries(versions)) {
             const option = document.createElement("option");
-            option.value = baseUrl + versionUrl + '/'; // Prepend base URL
+            option.value = versionUrl + '/';
             option.textContent = versionName;
 
             // Check if the current URL matches this option's value
-            if (currentPath === option.value) {
+            if (currentPath.includes(option.value)) {
                 option.selected = true; // Set this option as selected
             }
 

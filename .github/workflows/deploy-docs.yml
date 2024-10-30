@@ -22,6 +22,7 @@ jobs:
 
   get-changed-files:
     runs-on: ubuntu-latest
+    if: ${{ !startsWith(github.ref, 'refs/tags/') }}
     outputs:
       core_any_changed: ${{ steps.changed-files.outputs.core_any_changed }}
       prover_any_changed: ${{ steps.changed-files.outputs.prover_any_changed }}
@@ -47,7 +48,10 @@ jobs:
   deploy-core-docs:
     needs: get-changed-files
     runs-on: ubuntu-latest
-    if: ${{ needs.get-changed-files.outputs.core_any_changed == 'true' || needs.get-changed-files.outputs.ci_any_changed == 'true' || startsWith(github.ref, 'refs/tags/core-v') }}
+    if: |
+      always() &&
+      (needs.get-changed-files.result == 'success' || needs.get-changed-files.result == 'skipped') &&
+      (needs.get-changed-files.outputs.core_any_changed == 'true' || needs.get-changed-files.outputs.ci_any_changed == 'true' || startsWith(github.ref, 'refs/tags/core-v'))
     permissions:
       contents: write
     steps:
@@ -68,6 +72,7 @@ jobs:
     # Special condition to run jobs consequentially
     if: |
       always() &&
+      (needs.get-changed-files.result == 'success' || needs.get-changed-files.result == 'skipped') &&
       (needs.deploy-core-docs.result == 'success' || needs.deploy-core-docs.result == 'skipped') &&
       (needs.get-changed-files.outputs.prover_any_changed == 'true' || needs.get-changed-files.outputs.ci_any_changed == 'true' || startsWith(github.ref, 'refs/tags/prover-v'))
     runs-on: ubuntu-latest
