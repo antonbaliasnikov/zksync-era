@@ -58,6 +58,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
 
+      - name: Extract version from tag
+        if: startsWith(github.ref, 'refs/tags/core-v')
+        id: extract-version
+        run: |
+          TAG="${{ github.ref_name }}"
+          VERSION="${TAG#*-}"
+          echo "version=${VERSION}" >> "${GITHUB_OUTPUT}"
+
       - name: Deploy core docs
         uses: matter-labs/deploy-mdbooks@fbbaab13c89782ff79b8b5fd2aa17d5540f41830 # v1
         with:
@@ -81,6 +89,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+
+      - name: Extract version from tag
+        if: startsWith(github.ref, 'refs/tags/prover-v')
+        id: extract-version
+        run: |
+          TAG="${{ github.ref_name }}"
+          VERSION="${TAG#*-}"
+          echo "version=${VERSION}" >> "${GITHUB_OUTPUT}"
 
       - name: Deploy prover docs
         uses: matter-labs/deploy-mdbooks@fbbaab13c89782ff79b8b5fd2aa17d5540f41830 # v1
