@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Get the base URL from the mdBook configuration
-    const baseUrl = document.location.origin + '/zksync-era/core/';
+    const baseUrl = document.location.origin + '/zksync-era/core';
 
     // Function to create version selector
     function createVersionSelector(versions) {
