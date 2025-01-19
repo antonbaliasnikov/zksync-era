@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           if [[ "${{ github.event_name }}" != "pull_request" ]]; then
-            echo "cache-to='type=gha,mode=max,scope=chef'" >> "${GITHUB_OUTPUT}"
+            echo "cache-to=type=gha,mode=max,scope=chef" >> "${GITHUB_OUTPUT}"
           fi
 
       - name: Build and push Docker image
