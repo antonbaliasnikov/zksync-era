@@ -31,5 +31,6 @@ pub enum ContractVerifierError {
 impl From<DalError> for ContractVerifierError {
     fn from(err: DalError) -> Self {
         Self::Internal(err.generalize())
+
     }
 }
