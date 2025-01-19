@@ -1,5 +1,5 @@
 FROM ghcr.io/matter-labs/zksync-build-base:latest AS chef
-RUN cargo install cargo-chef
+RUN cargo install cargo-chef --locked --version 0.1.70
 WORKDIR /usr/src/zksync
 
 FROM chef AS planner
