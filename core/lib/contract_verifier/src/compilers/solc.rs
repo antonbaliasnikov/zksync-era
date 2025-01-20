@@ -105,6 +105,7 @@ impl Compiler<SolcInput> for Solc {
         input: SolcInput,
     ) -> Result<CompilationArtifacts, ContractVerifierError> {
         let mut command = tokio::process::Command::new(&self.path);
+        println!("command");
         let mut child = command
             .arg("--standard-json")
             .stdin(Stdio::piped())
